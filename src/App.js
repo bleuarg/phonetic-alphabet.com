@@ -42,7 +42,7 @@ class App extends React.Component {
   }
 
   handleChange = event => {
-    const phoneticStrings = this.getNatoArrayFromString(event.target.value);
+    const phoneticStrings = this.getPhoneticArrayFromString(event.target.value);
 
     this.setState({
       input: event.target.value,
