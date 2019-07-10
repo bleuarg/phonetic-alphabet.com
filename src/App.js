@@ -2,7 +2,6 @@ import React from 'react';
 import { remove as removeDiacritics } from 'diacritics';
 import { ResultDisplay } from './ResultDisplay';
 import { Input } from './Input';
-import './App.css';
 
 const ALPHABET = [
   'Alfa', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot',
