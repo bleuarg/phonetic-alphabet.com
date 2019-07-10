@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { remove as removeDiacritics } from 'diacritics';
 import './App.css';
 
@@ -10,12 +10,13 @@ const ALPHABET = [
   'Yankee', 'Zulu ', 'Zero', 'One', 'Two', 'Three',
   'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'
 ];
-const REFERENCE = 'abcdefghijklmnopqrstuvwxyz0123456789'
+
+const REFERENCE = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
 class App extends React.Component {
   state = {
     input: '',
-    natoStrings: []
+    phoneticStrings: []
   };
   inputRef;
 
@@ -40,11 +41,11 @@ class App extends React.Component {
   }
 
   handleChange = event => {
-    const natoStrings = this.getNatoArrayFromString(event.target.value);
+    const phoneticStrings = this.getNatoArrayFromString(event.target.value);
 
     this.setState({
       input: event.target.value,
-      natoStrings
+      phoneticStrings
     });
   };
 
@@ -56,9 +57,9 @@ class App extends React.Component {
     this.inputRef.focus();
   }
 
-  renderContent() {
-    if (this.state.natoStrings.length > 0) {
-      return this.state.natoStrings.map((str, index) => <span key={str + index} className='Word'> {str}</span>)
+  renderResult() {
+    if (this.state.phoneticStrings.length > 0) {
+      return this.state.phoneticStrings.map((str, index) => <span key={str + index} className='Word'> {str}</span>)
     } else {
       return <div>Start typing to see the letters spelled out using the <a href="https://en.wikipedia.org/wiki/NATO_phonetic_alphabet">NATO phonetic alphabet</a>.</div>
     }
@@ -69,21 +70,22 @@ class App extends React.Component {
       <div className='App'>
         <main class="Main">
           <input
-            className='Input'
-            placeholder='Start typing...'
             type='text'
-            ref={component => (this.inputRef = component)}
+            className='Input'
+            aria-label="Text to be spelled out"
+            placeholder='Start typing here.'
+            ref={element => (this.inputRef = element)}
             value={this.state.input}
             onChange={this.handleChange}
           />
-          <div className='NatoStrings'>
-            {this.renderContent()}
+          <div className='PhoneticStrings'>
+            {this.renderResult()}
           </div>
         </main>
         <footer className="Footer">
           This is a tool I built to have a visual reference that would <strong>work offline</strong> and would be faster than using a cheat sheet.<br/>
-          It works 100% offline. Just bookmark the page or add it to your homepage.<br/>
-          Built by Patrick Davies, <a href="">code and bugs on Github.</a>
+          It works 100% offline. Just bookmark the page or add it to your phone's home screen.<br/>
+          Built by Patrick Davies, <a href="https://github.com/bleuarg/phonetic-alphabet.com">code and bugs on Github.</a>
         </footer>
       </div>
     );
