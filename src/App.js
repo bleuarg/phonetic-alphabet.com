@@ -1,6 +1,7 @@
 import React from 'react';
 import { remove as removeDiacritics } from 'diacritics';
 import { ResultDisplay } from './ResultDisplay';
+import { Input } from './Input';
 import './App.css';
 
 const ALPHABET = [
@@ -19,7 +20,6 @@ class App extends React.Component {
     input: '',
     phoneticStrings: []
   };
-  inputRef;
 
   getPhoneticWord(char) {
     let index = REFERENCE.indexOf(removeDiacritics(char));
@@ -53,29 +53,11 @@ class App extends React.Component {
 
   reset = () => this.setState({input: [], phoneticStrings: []})
 
-  focus() {
-    this.inputRef.focus();
-  }
-
-  componentDidUpdate = this.focus;
-  componentDidMount = this.focus;
-
   render() {
     return (
       <div className='App'>
         <main className="Main">
-          <div className="Input">
-            <input
-              type='text'
-              className='Input-element'
-              aria-label='Text to be spelled out'
-              placeholder='Start typing here.'
-              ref={element => (this.inputRef = element)}
-              value={this.state.input}
-              onChange={this.handleChange}
-            />
-            <button title="Clear entry" onClick={this.reset} className="Input-clear">×</button>
-          </div>
+          <Input onReset={this.reset} onChange={this.handleChange} value={this.state.input} />
           
           <div className='Result'>
             <ResultDisplay phoneticStrings={this.state.phoneticStrings} />
