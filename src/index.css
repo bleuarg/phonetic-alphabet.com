@@ -38,7 +38,7 @@ html, body, #root {
 .Input:focus {
   border-color: #02A9EA;
 }
-.NatoStrings {
+.PhoneticStrings {
   font-size: 24px;
   margin-top: 20px;
   line-height: 38px;
