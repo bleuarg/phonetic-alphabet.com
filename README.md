@@ -1,4 +1,4 @@
-# Phonetic alphabet speller
+# Phonetic alphabet translator
 
 [Phonetic-alphabet.com](https://phonetic-alphabet.com) is a tool I built to have a visual reference that would *work offline* and would be faster than using a cheat sheet.
 
