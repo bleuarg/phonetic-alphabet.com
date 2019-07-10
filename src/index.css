@@ -32,10 +32,9 @@ html, body, #root {
   width: 100%;
   outline: none;
 }
-input::-webkit-input-placeholder {
+.Input::-webkit-input-placeholder {
   line-height: 28px;
 }
-
 .Input:focus {
   border-color: #02A9EA;
 }
@@ -45,7 +44,6 @@ input::-webkit-input-placeholder {
   line-height: 38px;
   color: #333;
 }
-
 .Footer {
   font-family: "Helvetica neue", Helvetica, Arial, sans-serif;
   padding: 20px;
