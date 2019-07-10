@@ -33,4 +33,4 @@ class Input extends React.Component {
   }
 }
 
-export {Input};
+export { Input };

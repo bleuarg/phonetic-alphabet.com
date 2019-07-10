@@ -33,7 +33,7 @@ class App extends React.Component {
     return value;
   }
   
-  getNatoArrayFromString(str) {
+  getPhoneticArrayFromString(str) {
     return str
       .toLowerCase()
       .split('')
@@ -58,7 +58,6 @@ class App extends React.Component {
       <div className='App'>
         <main className="Main">
           <Input onReset={this.reset} onChange={this.handleChange} value={this.state.input} />
-          
           <div className='Result'>
             <ResultDisplay phoneticStrings={this.state.phoneticStrings} />
           </div>
