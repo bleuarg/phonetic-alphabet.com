@@ -1,6 +1,6 @@
 # Phonetic alphabet speller
 
-[Phonetic-alphabet.com](Phonetic-alphabet.com) is a tool I built to have a visual reference that would *work offline* and would be faster than using a cheat sheet.
+[Phonetic-alphabet.com](https://phonetic-alphabet.com) is a tool I built to have a visual reference that would *work offline* and would be faster than using a cheat sheet.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
