@@ -1,5 +1,6 @@
 import React from 'react';
 import { remove as removeDiacritics } from 'diacritics';
+import { ResultDisplay } from './ResultDisplay';
 import './App.css';
 
 const ALPHABET = [
@@ -20,7 +21,7 @@ class App extends React.Component {
   };
   inputRef;
 
-  getNatoWord(char) {
+  getPhoneticWord(char) {
     let index = REFERENCE.indexOf(removeDiacritics(char));
     let value = char;
     if (index > -1) {
@@ -31,12 +32,13 @@ class App extends React.Component {
     }
     return value;
   }
+  
   getNatoArrayFromString(str) {
     return str
       .toLowerCase()
       .split('')
       .map(char => {
-        return this.getNatoWord(char)
+        return this.getPhoneticWord(char)
       });
   }
 
@@ -49,37 +51,34 @@ class App extends React.Component {
     });
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  reset = () => this.setState({input: [], phoneticStrings: []})
+
+  focus() {
     this.inputRef.focus();
   }
 
-  componentDidMount(prevProps, prevState) {
-    this.inputRef.focus();
-  }
-
-  renderResult() {
-    if (this.state.phoneticStrings.length > 0) {
-      return this.state.phoneticStrings.map((str, index) => <span key={str + index} className='Word'> {str}</span>)
-    } else {
-      return <div>Start typing to see the letters spelled out using the <a href="https://en.wikipedia.org/wiki/NATO_phonetic_alphabet">NATO phonetic alphabet</a>.</div>
-    }
-  }
+  componentDidUpdate = this.focus;
+  componentDidMount = this.focus;
 
   render() {
     return (
       <div className='App'>
-        <main class="Main">
-          <input
-            type='text'
-            className='Input'
-            aria-label="Text to be spelled out"
-            placeholder='Start typing here.'
-            ref={element => (this.inputRef = element)}
-            value={this.state.input}
-            onChange={this.handleChange}
-          />
-          <div className='PhoneticStrings'>
-            {this.renderResult()}
+        <main className="Main">
+          <div className="Input">
+            <input
+              type='text'
+              className='Input-element'
+              aria-label='Text to be spelled out'
+              placeholder='Start typing here.'
+              ref={element => (this.inputRef = element)}
+              value={this.state.input}
+              onChange={this.handleChange}
+            />
+            <button title="Clear entry" onClick={this.reset} className="Input-clear">×</button>
+          </div>
+          
+          <div className='Result'>
+            <ResultDisplay phoneticStrings={this.state.phoneticStrings} />
           </div>
         </main>
         <footer className="Footer">
