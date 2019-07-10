@@ -17,6 +17,21 @@ html, body, #root {
 .Main {
   flex: 1;
 }
+.Result {
+  font-size: 24px;
+  margin-top: 20px;
+  line-height: 38px;
+  color: #333;
+}
+.Footer {
+  font-family: "Helvetica neue", Helvetica, Arial, sans-serif;
+  padding: 20px;
+  margin-left: -20px;
+  margin-right: -20px;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6em;
+}
 .Input {
   position: relative;
 }
@@ -34,21 +49,6 @@ html, body, #root {
   transition: border-color .3s ease;
   width: 100%;
 }
-.Result {
-  font-size: 24px;
-  margin-top: 20px;
-  line-height: 38px;
-  color: #333;
-}
-.Footer {
-  font-family: "Helvetica neue", Helvetica, Arial, sans-serif;
-  padding: 20px;
-  margin-left: -20px;
-  margin-right: -20px;
-  font-size: 14px;
-  color: #444;
-  line-height: 1.6em;
-}
 .Input-element::-webkit-input-placeholder {
   line-height: 28px;
 }
@@ -61,16 +61,20 @@ html, body, #root {
   border-radius: 15px;
   border: 0;
   box-shadow: none;
-  color: #fff;
-  font-size: 30px;
   height: 30px;
-  line-height: 30px;
   padding: 0;
   position: absolute;
   right: 9px;
-  text-align: center;
+  transition: background .1s ease;
   top: 27px;
   width: 30px;
+}
+.Input-clearIcon {
+  fill: #fff;
+}
+.Input-clear:focus {
+  outline: none;
+  background: #02A9EA;
 }
 .Word {
   opacity: 0;
