@@ -41,8 +41,19 @@ class App extends React.Component {
       });
   }
 
+  // https://gist.github.com/nmsdvid/8807205#gistcomment-2595895
+  debounce = (callback, time = 250, interval) => 
+  (...args) =>
+    clearTimeout(interval, interval = setTimeout(callback, time, ...args));
+
+  pushGaEvent = this.debounce(() => {
+      window.gtag && window.gtag('event', 'type');
+  }, 500);
+
   handleChange = event => {
     const phoneticStrings = this.getPhoneticArrayFromString(event.target.value);
+
+    this.pushGaEvent();
 
     this.setState({
       input: event.target.value,
